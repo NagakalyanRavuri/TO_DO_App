@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    #taskInput {
+      width: 70%;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 10px;
+      margin-bottom: 8px;
+      background-color: #f3f3f3;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .actions button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+
+  <input type="text" id="taskInput" placeholder="Enter a new task" />
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    const apiUrl = "http://localhost:8080/tasks";
+
+    function fetchTasks() {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(tasks => {
+          const list = document.getElementById("taskList");
+          list.innerHTML = "";
+          tasks.forEach(task => {
+            const li = document.createElement("li");
+            li.className = task.completed ? "completed" : "";
+            li.innerHTML = `
+              <span>${task.title}</span>
+              <span class="actions">
+                <button onclick="updateTask(${task.id}, '${task.title}')">Update</button>
+                <button onclick="deleteTask(${task.id})">Delete</button>
+              </span>
+            `;
+            list.appendChild(li);
+          });
+        });
+    }
+
+    function addTask() {
+      const title = document.getElementById("taskInput").value;
+      if (title.trim() === "") return alert("Please enter a task");
+
+      fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, completed: false })
+      })
+      .then(() => {
+        document.getElementById("taskInput").value = "";
+        fetchTasks();
+      });
+    }
+
+    function updateTask(id, currentTitle) {
+      const newTitle = prompt("Update the task title:", currentTitle);
+      if (newTitle === null || newTitle.trim() === "") return;
+
+      fetch(`${apiUrl}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: newTitle, completed: false })
+      }).then(fetchTasks);
+    }
+
+    function deleteTask(id) {
+      fetch(`${apiUrl}/${id}`, {
+        method: "DELETE"
+      }).then(fetchTasks);
+    }
+
+    fetchTasks(); // Load tasks on page load
+  </script>
+</body>
+</html>
