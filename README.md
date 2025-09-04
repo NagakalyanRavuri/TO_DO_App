@@ -32,4 +32,5 @@ A full-stack **Task Management Application** built with **Spring Boot (REST APIs
 
 1. **Clone the repository**  
 ```bash[
-https://github.com/NagakalyanRavuri/TO_DO_App.git
+git clone https://github.com/NagakalyanRavuri/TO_DO_App.git
+cd TO_DO_App
