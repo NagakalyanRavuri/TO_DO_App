@@ -33,7 +33,7 @@ A full-stack **Task Management Application** built with **Spring Boot (REST APIs
 # 📸 Screenshots
 
 ### Frontend UI
-![App Screenshot](screenshots/frontend-ui.png)
+![App Screenshot](dashboard.png)
 
 ### Postman API Testing
 ![API Screenshot](screenshots/postman-api.png)
