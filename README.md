@@ -35,11 +35,8 @@ A full-stack **Task Management Application** built with **Spring Boot (REST APIs
 ### Frontend UI
 ![App Screenshot](dashboard.png)
 
-### Postman API Testing
-![API Screenshot](screenshots/postman-api.png)
-
 ### Database (MySQL Workbench)
-![DB Screenshot](screenshots/db-tasks.png)
+![DB Screenshot](task DB.png)
 
 
 ## ⚙️ Installation & Setup  
