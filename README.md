@@ -28,9 +28,24 @@ A full-stack **Task Management Application** built with **Spring Boot (REST APIs
 
 ---
 
+
+
+# 📸 Screenshots
+
+### Frontend UI
+![App Screenshot](screenshots/frontend-ui.png)
+
+### Postman API Testing
+![API Screenshot](screenshots/postman-api.png)
+
+### Database (MySQL Workbench)
+![DB Screenshot](screenshots/db-tasks.png)
+
+
 ## ⚙️ Installation & Setup  
 
 1. **Clone the repository**  
-```bash[
+```bash
 git clone https://github.com/NagakalyanRavuri/TO_DO_App.git
 cd TO_DO_App
+
