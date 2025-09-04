@@ -36,7 +36,7 @@ A full-stack **Task Management Application** built with **Spring Boot (REST APIs
 ![App Screenshot](dashboard.png)
 
 ### Database (MySQL Workbench)
-![DB Screenshot](task DB.png)
+![DB Screenshot](taskDB.png)
 
 
 ## ⚙️ Installation & Setup  
